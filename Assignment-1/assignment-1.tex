@@ -141,7 +141,7 @@ https://github.com/Sadiq0123/C-and-DS/tree/main/Assignment-1
 \end{lstlisting}
 %
 
-\section{Problem}
+\section{\textbf{Problem}}
 
 \textbf{Consider the following C program:}
 \begin{tcolorbox}
@@ -172,8 +172,10 @@ int main (){
 The output of this program is \_.
 
 
-\section{Solution}
-The answer to the question is 4. The variable \texttt{counter} is a global variable with initial value set to 0, and is incremented by 1 everytime the function \texttt{calc} is called.
+\section{\textbf{Solution}}
+\textbf{Answer:} 4.
+\\~\\
+The variable \texttt{counter} is a global variable with initial value set to 0, and is incremented by 1 everytime the function \texttt{calc} is called.
 \\~\\ 
 The function \texttt{calc} returns $a^b$ only if $b$ is a power of 3; else the function returns nothing. The code behaves this way because eventually the function calls \texttt{calc(a, b/3)} where $b<3$, which leads to an infinite recursive call of \texttt{calc(a, 0)}. So, the stack overflow causes Segmentation Fault error during runtime.
 \\~\\ 
