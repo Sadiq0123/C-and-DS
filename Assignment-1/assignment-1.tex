@@ -31,6 +31,7 @@
 \usepackage[breaklinks=true]{hyperref}
 \usepackage{graphicx}
 \usepackage{tkz-euclide}
+\usetikzlibrary{positioning}
 
 \usetikzlibrary{calc,math}
 \usepackage{listings}
@@ -182,16 +183,43 @@ The function \texttt{calc} returns $a^b$ only if $b$ is a power of 3; else the f
 If $b$ is valid, then \texttt{calc} recursively calls itself for $b/3$. So, the total number of times \texttt{counter} is incremented is $\log_3\brak{b}$ times. The following table shows the value of \texttt{counter} at every step.
 
 \begin{center}
-\begin{tabular}{ |c|c| } 
- \hline
- \texttt{calc(a, b)} & \texttt{counter} \\ 
- \hline
- \texttt{calc(4, 81)} & \texttt{1} \\
- \texttt{calc(4, 27)} & \texttt{2} \\
- \texttt{calc(4, 9)} & \texttt{3} \\
- \texttt{calc(4, 3)} & \texttt{4} \\
- \hline
-\end{tabular}
+\begin{tikzpicture}[
+roundnode/.style={circle, draw=green!60, fill=green!5, very thick, minimum size=7mm},
+round2node/.style={circle, draw=red!60, fill=red!5, very thick, minimum size=7mm},
+squarednode/.style={rectangle, draw=black!60, fill=white!5, very thick, minimum size=5mm},
+]
+%Nodes
+\node[roundnode]        (start)                                 {start};
+\node[squarednode]      (first)        [below=of start]         {\texttt{calc(4, 81)}};
+\node[squarednode]      (second)       [below=of first]         {\texttt{calc(4, 27)}};
+\node[squarednode]      (third)        [below=of second]        {\texttt{calc(4, 9)}};
+\node[squarednode]      (fourth)       [below=of third]         {\texttt{calc(4, 3)}};
+\node[round2node]        (end)          [below=of fourth]     {end};
+
+%Lines
+\draw[->] (start.south) -- (first.north);
+\draw[->] (first.south) -- (second.north);
+\draw[->] (second.south) -- (third.north);
+\draw[->] (third.south) -- (fourth.north);
+\draw[->] (fourth.south) -- (end.north);
+
+%Text
+\node[] at (1.1,-1) {\texttt{counter=0}};
+\node[] at (1.1,-2.7) {\texttt{counter=1}};
+\node[] at (1.1,-4.5) {\texttt{counter=2}};
+\node[] at (1.1,-6.1) {\texttt{counter=3}};
+\node[] at (1.1,-7.8) {\texttt{counter=4}};
+\end{tikzpicture}
+% \begin{tabular}{ |c|c| } 
+%  \hline
+%  \texttt{calc(a, b)} & \texttt{counter} \\ 
+%  \hline
+%  \texttt{calc(4, 81)} & \texttt{1} \\
+%  \texttt{calc(4, 27)} & \texttt{2} \\
+%  \texttt{calc(4, 9)} & \texttt{3} \\
+%  \texttt{calc(4, 3)} & \texttt{4} \\
+%  \hline
+% \end{tabular}
 \end{center}
 
 As $\log_3\brak{81} = 4$, the output of the code would be equal to 4.
