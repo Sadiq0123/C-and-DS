@@ -228,22 +228,22 @@ As $\log_3\brak{81} = 4$, the output of the code would be equal to 4.
 
 \section{\textbf{Mathematical Formula}}
 
-One function call of \texttt{calc(a, b)} increments \texttt{counter} by 1, and calls the function \texttt{calc(a, b/3)}. This can be mathematically written as the equation below.
+One function call of \texttt{calc(a, b)} increments \texttt{counter} by 1, and calls the function \texttt{calc(a, b/3)}. This can be mathematically written using a function f, that returns the \texttt{counter} variable value as shown below.
 
 \begin{equation}
-    \texttt{calc(a,b)} = 1 + \texttt{calc(a,b/3)}
+    \texttt{f(b)} = 1 + \texttt{f(b/3)}
 \end{equation}
 
 Also, when $b = 3$, \texttt{counter} is incremented once and returns.
 \begin{equation}
-    \texttt{calc(a,3)} = 1 
+    \texttt{f(3)} = 1 
 \end{equation}
 
 The recurrence equation would then be
 \begin{align}
-    \texttt{calc(a,b)} &= 1 + \texttt{calc(a,b/3)} \\
-    \texttt{calc(a,b/3)} &= 1 + \texttt{calc(a,b/3}^2\texttt{)} \\
-    ...     \texttt{calc(a,3)} &= 1
+    \texttt{f(b)} &= 1 + \texttt{f(b/3)} \\
+    \texttt{f(b/3)} &= 1 + \texttt{f(b/3}^2\texttt{)} \\
+    ...     \texttt{f(3)} &= 1
 \end{align}
 
 The number of times the function is called can be derived from the equation
